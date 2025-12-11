@@ -490,7 +490,7 @@ const Caregiver = () => {
                 <li>Chest pain or severe headache</li>
                 <li>Difficulty breathing</li>
                 <li>Confusion or memory loss</li>
-                <li>Fever > 101°F (38.3°C)</li>
+                <li>Fever {`>`} 101°F (38.3°C)</li>
                 <li>Severe weakness or falls</li>
               </ul>
             </div>
