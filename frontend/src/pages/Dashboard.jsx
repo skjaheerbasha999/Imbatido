@@ -211,6 +211,136 @@ const Dashboard = () => {
         </div>
       </section>
 
+      {/* Statistics & Analytics Section */}
+      <section style={{maxWidth:'1200px', margin:'3rem auto', padding:'0 1rem', marginBottom:'3rem'}}>
+        <h2 style={{fontSize:'1.8rem', fontWeight:700, color:'#2563eb', marginBottom:'2rem'}}>Analytics & Statistics</h2>
+        
+        {/* Main Stats Grid */}
+        <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(250px, 1fr))', gap:'1.5rem', marginBottom:'2rem'}}>
+          {/* Consistency Score */}
+          <div style={{background:'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', padding:'2rem', borderRadius:'12px', boxShadow:'0 4px 15px rgba(102, 126, 234, 0.4)', color:'#fff'}}>
+            <p style={{margin:'0 0 1rem 0', fontSize:'0.9rem', opacity:'0.9'}}>Consistency Score</p>
+            <div style={{fontSize:'3rem', fontWeight:800, margin:'0 0 0.5rem 0'}}>87%</div>
+            <p style={{margin:'0', fontSize:'0.85rem', opacity:'0.9'}}>Average adherence this month</p>
+            <div style={{marginTop:'1rem', height:'4px', background:'rgba(255,255,255,0.3)', borderRadius:'2px', overflow:'hidden'}}>
+              <div style={{height:'100%', width:'87%', background:'#fff', borderRadius:'2px'}}></div>
+            </div>
+          </div>
+
+          {/* Medicines Taken Properly */}
+          <div style={{background:'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)', padding:'2rem', borderRadius:'12px', boxShadow:'0 4px 15px rgba(245, 87, 108, 0.4)', color:'#fff'}}>
+            <p style={{margin:'0 0 1rem 0', fontSize:'0.9rem', opacity:'0.9'}}>Medicines Taken</p>
+            <div style={{fontSize:'3rem', fontWeight:800, margin:'0 0 0.5rem 0'}}>{takenCount}/{medicines.length}</div>
+            <p style={{margin:'0', fontSize:'0.85rem', opacity:'0.9'}}>Today properly taken</p>
+            <div style={{marginTop:'1rem', fontSize:'2rem'}}>✓</div>
+          </div>
+
+          {/* Streak Days */}
+          <div style={{background:'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)', padding:'2rem', borderRadius:'12px', boxShadow:'0 4px 15px rgba(79, 172, 254, 0.4)', color:'#fff'}}>
+            <p style={{margin:'0 0 1rem 0', fontSize:'0.9rem', opacity:'0.9'}}>Current Streak</p>
+            <div style={{fontSize:'3rem', fontWeight:800, margin:'0 0 0.5rem 0'}}>12</div>
+            <p style={{margin:'0', fontSize:'0.85rem', opacity:'0.9'}}>Consecutive days</p>
+            <p style={{marginTop:'0.5rem', fontSize:'1.2rem'}}>🔥</p>
+          </div>
+
+          {/* Missed Doses */}
+          <div style={{background:'linear-gradient(135deg, #fa709a 0%, #fee140 100%)', padding:'2rem', borderRadius:'12px', boxShadow:'0 4px 15px rgba(250, 112, 154, 0.4)', color:'#fff'}}>
+            <p style={{margin:'0 0 1rem 0', fontSize:'0.9rem', opacity:'0.9'}}>Missed Doses</p>
+            <div style={{fontSize:'3rem', fontWeight:800, margin:'0 0 0.5rem 0'}}>2</div>
+            <p style={{margin:'0', fontSize:'0.85rem', opacity:'0.9'}}>This month</p>
+            <p style={{marginTop:'0.5rem', fontSize:'1.2rem'}}>⚠️</p>
+          </div>
+        </div>
+
+        {/* Weekly Chart */}
+        <div style={{background:'#fff', padding:'2rem', borderRadius:'12px', boxShadow:'0 2px 8px rgba(0,0,0,0.04)', marginBottom:'2rem'}}>
+          <h3 style={{color:'#2563eb', fontSize:'1.3rem', fontWeight:700, marginBottom:'1.5rem', margin:'0 0 1.5rem 0'}}>Weekly Adherence</h3>
+          <div style={{display:'flex', alignItems:'flex-end', justifyContent:'space-around', height:'200px', gap:'1rem', padding:'1rem 0'}}>
+            {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, idx) => {
+              const heights = [85, 92, 88, 95, 100, 90, 78];
+              return (
+                <div key={day} style={{display:'flex', flexDirection:'column', alignItems:'center', gap:'0.5rem', flex:1}}>
+                  <div style={{width:'100%', background:`linear-gradient(to top, #2563eb, #3b82f6)`, height:`${heights[idx]}px`, borderRadius:'8px 8px 0 0', position:'relative', transition:'all 0.3s ease'}}
+                    onMouseOver={(e) => e.currentTarget.style.opacity = '0.8'}
+                    onMouseOut={(e) => e.currentTarget.style.opacity = '1'}
+                    title={`${heights[idx]}% adherence`}
+                  ></div>
+                  <span style={{fontSize:'0.85rem', color:'#666', fontWeight:500}}>{heights[idx]}%</span>
+                  <span style={{fontSize:'0.8rem', color:'#999'}}>{day}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Medicine Category Stats */}
+        <div style={{background:'#fff', padding:'2rem', borderRadius:'12px', boxShadow:'0 2px 8px rgba(0,0,0,0.04)', marginBottom:'2rem'}}>
+          <h3 style={{color:'#2563eb', fontSize:'1.3rem', fontWeight:700, marginBottom:'1.5rem', margin:'0 0 1.5rem 0'}}>Medicine Categories</h3>
+          <div style={{display:'grid', gap:'1rem'}}>
+            {[
+              { category: 'Cardiovascular', taken: 8, total: 10, color: '#ef4444' },
+              { category: 'Diabetes Management', taken: 6, total: 7, color: '#f59e0b' },
+              { category: 'Vitamins & Supplements', taken: 5, total: 5, color: '#10b981' },
+              { category: 'Pain Relief', taken: 2, total: 3, color: '#3b82f6' }
+            ].map(cat => (
+              <div key={cat.category} style={{display:'flex', alignItems:'center', gap:'1rem', padding:'1rem', background:'#f9fafb', borderRadius:'8px'}}>
+                <div style={{flex:1}}>
+                  <p style={{margin:'0 0 0.5rem 0', fontWeight:600, color:'#222'}}>{cat.category}</p>
+                  <div style={{display:'flex', alignItems:'center', gap:'0.5rem', fontSize:'0.9rem', color:'#666'}}>
+                    <span>{cat.taken}/{cat.total} completed</span>
+                  </div>
+                </div>
+                <div style={{width:'150px'}}>
+                  <div style={{background:'#e5e7eb', borderRadius:'12px', overflow:'hidden', height:'8px'}}>
+                    <div style={{background:cat.color, height:'100%', width:`${(cat.taken/cat.total)*100}%`, borderRadius:'12px'}}></div>
+                  </div>
+                </div>
+                <span style={{fontSize:'1.2rem', fontWeight:700, color:cat.color, minWidth:'40px', textAlign:'right'}}>{Math.round((cat.taken/cat.total)*100)}%</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Health Goals */}
+        <div style={{background:'#fff', padding:'2rem', borderRadius:'12px', boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
+          <h3 style={{color:'#2563eb', fontSize:'1.3rem', fontWeight:700, marginBottom:'1.5rem', margin:'0 0 1.5rem 0'}}>Health Goals</h3>
+          <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(220px, 1fr))', gap:'1.5rem'}}>
+            <div style={{border:'2px solid #22c55e', padding:'1.5rem', borderRadius:'10px', background:'#f0fdf4'}}>
+              <div style={{display:'flex', justifyContent:'space-between', alignItems:'start', marginBottom:'1rem'}}>
+                <h4 style={{color:'#15803d', margin:'0', fontWeight:600}}>90% Consistency</h4>
+                <span style={{fontSize:'1.2rem'}}>⏳</span>
+              </div>
+              <div style={{background:'#e5e7eb', borderRadius:'8px', overflow:'hidden', height:'6px', marginBottom:'0.5rem'}}>
+                <div style={{background:'#22c55e', height:'100%', width:'87%'}}></div>
+              </div>
+              <p style={{color:'#666', fontSize:'0.85rem', margin:'0'}}>87% of 90% target</p>
+            </div>
+
+            <div style={{border:'2px solid #3b82f6', padding:'1.5rem', borderRadius:'10px', background:'#eff6ff'}}>
+              <div style={{display:'flex', justifyContent:'space-between', alignItems:'start', marginBottom:'1rem'}}>
+                <h4 style={{color:'#1e40af', margin:'0', fontWeight:600}}>30-Day Streak</h4>
+                <span style={{fontSize:'1.2rem'}}>🎯</span>
+              </div>
+              <div style={{background:'#e5e7eb', borderRadius:'8px', overflow:'hidden', height:'6px', marginBottom:'0.5rem'}}>
+                <div style={{background:'#3b82f6', height:'100%', width:'40%'}}></div>
+              </div>
+              <p style={{color:'#666', fontSize:'0.85rem', margin:'0'}}>12 of 30 days completed</p>
+            </div>
+
+            <div style={{border:'2px solid #8b5cf6', padding:'1.5rem', borderRadius:'10px', background:'#faf5ff'}}>
+              <div style={{display:'flex', justifyContent:'space-between', alignItems:'start', marginBottom:'1rem'}}>
+                <h4 style={{color:'#6d28d9', margin:'0', fontWeight:600}}>No Missed Doses</h4>
+                <span style={{fontSize:'1.2rem'}}>✨</span>
+              </div>
+              <div style={{background:'#e5e7eb', borderRadius:'8px', overflow:'hidden', height:'6px', marginBottom:'0.5rem'}}>
+                <div style={{background:'#8b5cf6', height:'100%', width:'85%'}}></div>
+              </div>
+              <p style={{color:'#666', fontSize:'0.85rem', margin:'0'}}>Only 2 missed in 30 days</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Caregiver Info */}
       <section style={{maxWidth:'1200px', margin:'0 auto', padding:'0 1rem', marginBottom:'3rem'}}>
         <h2 style={{fontSize:'1.8rem', fontWeight:700, color:'#2563eb', marginBottom:'2rem'}}>Caregivers</h2>
