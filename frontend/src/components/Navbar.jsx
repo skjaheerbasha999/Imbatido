@@ -15,6 +15,8 @@ const Navbar = () => {
         <li><Link to="/technology" style={{color:'#222', fontWeight:500, fontSize:'1.1rem', textDecoration:'none', transition:'color 0.3s ease'}} onMouseOver={(e) => e.target.style.color = '#2563eb'} onMouseOut={(e) => e.target.style.color = '#222'}>Technology</Link></li>
         <li><Link to="/impact" style={{color:'#222', fontWeight:500, fontSize:'1.1rem', textDecoration:'none', transition:'color 0.3s ease'}} onMouseOver={(e) => e.target.style.color = '#2563eb'} onMouseOut={(e) => e.target.style.color = '#222'}>Impact</Link></li>
         <li><Link to="/contact" style={{color:'#222', fontWeight:500, fontSize:'1.1rem', textDecoration:'none', transition:'color 0.3s ease'}} onMouseOver={(e) => e.target.style.color = '#2563eb'} onMouseOut={(e) => e.target.style.color = '#222'}>Contact</Link></li>
+        <li><Link to="/dashboard" style={{color:'#222', fontWeight:500, fontSize:'1.1rem', textDecoration:'none', transition:'color 0.3s ease'}} onMouseOver={(e) => e.target.style.color = '#2563eb'} onMouseOut={(e) => e.target.style.color = '#222'}} title="Patient Dashboard">📊 Dashboard</Link></li>
+        <li><Link to="/caregiver" style={{color:'#222', fontWeight:500, fontSize:'1.1rem', textDecoration:'none', transition:'color 0.3s ease'}} onMouseOver={(e) => e.target.style.color = '#2563eb'} onMouseOut={(e) => e.target.style.color = '#222'}} title="Caregiver Portal">👨‍⚕️ Caregiver</Link></li>
       </ul>
       <div className="navbar-actions" style={{display:'flex', gap:'1rem'}}>
         <Link to="/login">

@@ -9,7 +9,6 @@
   "main": "eslint.config.js",
   "scripts": {
     "dev": "vite",
-    "start": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
