@@ -1,29 +1,114 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
+import { useAuth } from '../AuthContext';
+import { useTheme } from '../ThemeContext';
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+  const { mode, toggle } = useTheme();
+  
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    setShowDropdown(false);
+    setShowMobileMenu(false);
+    navigate('/');
+  };
+
   return (
-    <nav className="navbar" style={{background:'#fff', boxShadow:'0 2px 8px rgba(0,0,0,0.04)', padding:'1.2rem 3rem', display:'flex', alignItems:'center', justifyContent:'space-between', position:'sticky', top:0, zIndex:10}}>
-      <Link to="/" style={{textDecoration:'none'}}>
-        <div className="navbar-logo" style={{fontWeight:700, fontSize:'1.5rem', letterSpacing:'1px', color:'#222'}}>💊 Med-Sync</div>
-      </Link>
-      <ul className="navbar-links" style={{display:'flex', gap:'2rem', listStyle:'none', margin:0, padding:0}}>
-        <li><Link to="/" style={{color:'#222', fontWeight:500, fontSize:'1.1rem', textDecoration:'none', transition:'color 0.3s ease'}} onMouseOver={(e) => e.target.style.color = '#2563eb'} onMouseOut={(e) => e.target.style.color = '#222'}>Home</Link></li>
-        <li><Link to="/about" style={{color:'#222', fontWeight:500, fontSize:'1.1rem', textDecoration:'none', transition:'color 0.3s ease'}} onMouseOver={(e) => e.target.style.color = '#2563eb'} onMouseOut={(e) => e.target.style.color = '#222'}>About</Link></li>
-        <li><Link to="/features" style={{color:'#222', fontWeight:500, fontSize:'1.1rem', textDecoration:'none', transition:'color 0.3s ease'}} onMouseOver={(e) => e.target.style.color = '#2563eb'} onMouseOut={(e) => e.target.style.color = '#222'}>Features</Link></li>
-        <li><Link to="/technology" style={{color:'#222', fontWeight:500, fontSize:'1.1rem', textDecoration:'none', transition:'color 0.3s ease'}} onMouseOver={(e) => e.target.style.color = '#2563eb'} onMouseOut={(e) => e.target.style.color = '#222'}>Technology</Link></li>
-        <li><Link to="/impact" style={{color:'#222', fontWeight:500, fontSize:'1.1rem', textDecoration:'none', transition:'color 0.3s ease'}} onMouseOver={(e) => e.target.style.color = '#2563eb'} onMouseOut={(e) => e.target.style.color = '#222'}>Impact</Link></li>
-        <li><Link to="/contact" style={{color:'#222', fontWeight:500, fontSize:'1.1rem', textDecoration:'none', transition:'color 0.3s ease'}} onMouseOver={(e) => e.target.style.color = '#2563eb'} onMouseOut={(e) => e.target.style.color = '#222'}>Contact</Link></li>
-      </ul>
-      <div className="navbar-actions" style={{display:'flex', gap:'1rem'}}>
-        <Link to="/login">
-          <button className="navbar-login" style={{background:'none', border:'1px solid #22c55e', color:'#22c55e', padding:'0.5rem 1.2rem', borderRadius:'6px', fontSize:'1rem', cursor:'pointer', fontWeight:500, transition:'all 0.3s ease'}} onMouseOver={(e) => {e.currentTarget.style.background = '#22c55e'; e.currentTarget.style.color = '#fff'}} onMouseOut={(e) => {e.currentTarget.style.background = 'none'; e.currentTarget.style.color = '#22c55e'}}>Login</button>
+    <nav className="navbar">
+      <div className="navbar-left">
+        <Link to="/" className="navbar-brand">
+          <span className="navbar-mark">Med</span>-Sync
         </Link>
-        <Link to="/signup">
-          <button className="navbar-getstarted" style={{background:'#22c55e', color:'#fff', border:'none', padding:'0.5rem 1.2rem', borderRadius:'6px', fontSize:'1rem', cursor:'pointer', fontWeight:500, transition:'all 0.3s ease'}} onMouseOver={(e) => e.currentTarget.style.background = '#16a34a'} onMouseOut={(e) => e.currentTarget.style.background = '#22c55e'}>Get started</button>
-        </Link>
+        
+        {/* Desktop Links: Hidden on Mobile */}
+        <div className="navbar-desktop-links">
+          <Link to="/" className="navbar-link">Home</Link>
+        </div>
       </div>
+
+      {/* Right side utility cluster */}
+      <div className="navbar-actions">
+        {/* Theme Changes Switcher Capsule */}
+        <button className="theme-changes-capsule" onClick={toggle} title="Toggle Dark/Light Mode">
+          <div className="theme-icons-row">
+            <span className="theme-icon">☀️</span>
+            <span className="theme-icon">🌙</span>
+          </div>
+          <span className="theme-text-label">CHANGES</span>
+        </button>
+
+        {/* Unified Menu Dropdown */}
+        <div className="menu-dropdown-container">
+          <button 
+            className="navbar-menu-btn" 
+            type="button"
+            onClick={() => setShowDropdown(!showDropdown)}
+            title="Open Menu"
+          >
+            <span>Menu</span>
+            <svg 
+              className={`chevron-icon ${showDropdown ? 'open' : ''}`} 
+              width="12" 
+              height="12" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2.5" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          
+          {showDropdown && (
+            <div className="menu-dropdown-overlay">
+              {!user ? (
+                <>
+                  <Link to="/login" className="dropdown-item" onClick={() => setShowDropdown(false)}>Login</Link>
+                  <Link to="/signup" className="dropdown-item" onClick={() => setShowDropdown(false)}>Get Started</Link>
+                  <Link to="/settings" className="dropdown-item" onClick={() => setShowDropdown(false)}>Settings</Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/profile" className="dropdown-item" onClick={() => setShowDropdown(false)}>My Account</Link>
+                  <Link to="/settings" className="dropdown-item" onClick={() => setShowDropdown(false)}>Settings</Link>
+                  <button type="button" className="dropdown-item logout-btn" onClick={handleLogout}>Logout</button>
+                </>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* Mobile Hamburger Menu Trigger */}
+        <button 
+          className="mobile-hamburger-btn" 
+          type="button"
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+          title="Toggle Navigation Menu"
+        >
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+        </button>
+      </div>
+
+      {/* Mobile Menu Dropdown Panel */}
+      {showMobileMenu && (
+        <div className="mobile-drawer-menu">
+          <Link to="/" className="mobile-drawer-link" onClick={() => setShowMobileMenu(false)}>Home</Link>
+          <div className="mobile-drawer-divider"></div>
+          {!user && (
+            <Link to="/signup" className="mobile-drawer-btn" onClick={() => setShowMobileMenu(false)}>GET STARTED</Link>
+          )}
+        </div>
+      )}
     </nav>
   );
 };

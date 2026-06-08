@@ -1,24 +1,39 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dotenv = require('dotenv').config();
+const path = require('path');
+const dotenv = require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+
+console.log("Checking API Key setup...", process.env.AI_API_KEY ? "Key Found! ✅" : "Key is Missing! ❌");
 
 // Import routes
 const authRoutes = require('./routes/auth');
 const medicineRoutes = require('./routes/medicine');
 const adherenceRoutes = require('./routes/adherence');
+const chatRoutes = require('./routes/chat');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:5176',
+    'https://medsyncs.vercel.app',
+    'https://imbatido.onrender.com'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/medicines', medicineRoutes);
 app.use('/api/adherence', adherenceRoutes);
+app.use('/api/chat', chatRoutes);
 
 // Health check endpoint
 app.get('/', (req, res) => {

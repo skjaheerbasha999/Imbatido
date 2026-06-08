@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@google/genai": "^2.8.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
@@ -8,6 +9,7 @@
     "nodemon": "^3.1.11"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   }
 }
