@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: medsync-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: MONGODB_URI
+        sync: false
+      - key: AI_API_KEY
+        sync: false
