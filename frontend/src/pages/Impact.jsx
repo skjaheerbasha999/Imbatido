@@ -6,8 +6,8 @@ import SectionIcon from '../components/SectionIcon';
 
 const Impact = () => {
   return (
-    <div style={{background:'#fff', color:'#222', fontFamily:'Inter, Arial, sans-serif'}}>
-      <section className="section card" style={{background:'#f8fafc', borderRadius:'12px', margin:'2rem auto', boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
+    <div style={{ background: 'var(--bg)', color: 'var(--text)', fontFamily: 'Inter, Arial, sans-serif' }}>
+      <section className="section card" style={{ background: 'var(--surface)', borderRadius: '12px', margin: '2rem auto', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
         <SectionIcon icon="🌟" label="Impact & Benefits" />
         <SectionIcon icon="👴" label="Impact on Elderly Patients" />
         <p>

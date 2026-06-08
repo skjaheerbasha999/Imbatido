@@ -6,8 +6,8 @@ import SectionIcon from '../components/SectionIcon';
 
 const Features = () => {
   return (
-    <div style={{background:'#fff', color:'#222', fontFamily:'Inter, Arial, sans-serif'}}>
-      <section className="section card" style={{background:'#f8fafc', borderRadius:'12px', margin:'2rem auto', boxShadow:'0 2px 8px rgba(0,0,0,0.04)'}}>
+    <div style={{ background: 'var(--bg)', color: 'var(--text)', fontFamily: 'Inter, Arial, sans-serif' }}>
+      <section className="section card" style={{ background: 'var(--surface)', borderRadius: '12px', margin: '2rem auto', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
         <SectionIcon icon="🛡️" label="Features & Solution" />
         <SectionIcon icon="👩‍⚕️" label="Caregiver Medicine Setup" />
         <p>
@@ -30,7 +30,7 @@ const Features = () => {
           Real-time updates and feedback between patients and caregivers create a smart, supportive care loop.
         </p>
         <SectionIcon icon="🖼️" label="Screenshots / UI Flow (optional)" />
-        <div style={{background:'#e0e7ff',color:'#2563eb',padding:'1rem',borderRadius:'8px',textAlign:'center'}}>
+        <div style={{ background: 'var(--surface)', color: 'var(--primary)', padding: '1rem', borderRadius: '8px', textAlign: 'center', border: '1px solid var(--border)' }}>
           <em>UI flow and screenshots coming soon...</em>
         </div>
       </section>

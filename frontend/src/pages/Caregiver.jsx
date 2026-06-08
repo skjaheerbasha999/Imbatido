@@ -102,7 +102,7 @@ const Caregiver = () => {
   };
 
   return (
-    <div style={{ background: '#f8fafc', color: '#222', fontFamily: 'Inter, Arial, sans-serif', minHeight: '100vh', paddingBottom: '3rem' }}>
+    <div style={{ background: 'var(--surface)'.replace('var(--surface)','var(--surface)'), color: 'var(--text)'.replace('var(--text)','var(--text)'), fontFamily: 'Inter, Arial, sans-serif', minHeight: '100vh', paddingBottom: '3rem' }}>
       {/* Header */}
       <section style={{ background: 'linear-gradient(135deg, #2563eb 0%, #1e40af 100%)', padding: '2rem 1rem', color: '#fff', textAlign: 'center' }}>
         <h1 style={{ fontSize: '2.5rem', fontWeight: 800, margin: '0', marginBottom: '0.5rem' }}>Caregiver Management</h1>
@@ -111,7 +111,7 @@ const Caregiver = () => {
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem 1rem' }}>
         {/* Why Caregivers Matter */}
-        <section style={{ background: '#fff', padding: '2rem', borderRadius: '12px', marginBottom: '3rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+        <section style={{ background: 'var(--card)'.replace('var(--card)','var(--card)'), padding: '2rem', borderRadius: '12px', marginBottom: '3rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
           <SectionIcon icon="👨‍⚕️" label="Why Caregiver Support Matters" />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '2rem' }}>
             <div style={{ padding: '1.5rem', background: '#f0f9ff', borderRadius: '8px', borderLeft: '4px solid #2563eb' }}>
@@ -130,9 +130,9 @@ const Caregiver = () => {
         </section>
 
         {/* Current Caregivers */}
-        <section style={{ background: '#fff', padding: '2rem', borderRadius: '12px', marginBottom: '3rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+        <section style={{ background: 'var(--card)'.replace('var(--card)','var(--card)'), padding: '2rem', borderRadius: '12px', marginBottom: '3rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#222', margin: '0' }}>🏥 Your Caregivers</h2>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text)'.replace('var(--text)','var(--text)'), margin: '0' }}>🏥 Your Caregivers</h2>
             <button
               onClick={() => setShowAddCaregiverForm(!showAddCaregiverForm)}
               style={{
@@ -154,7 +154,7 @@ const Caregiver = () => {
 
           {/* Add Caregiver Form */}
           {showAddCaregiverForm && (
-            <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem', border: '1px solid #e5e7eb' }}>
+            <div style={{ background: 'var(--surface)'.replace('var(--surface)','var(--surface)'), padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem', border: '1px solid var(--border)'.replace('var(--border)','var(--border)') }}>
               <h3 style={{ color: '#2563eb', marginTop: '0', marginBottom: '1rem' }}>Add New Caregiver</h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', marginBottom: '1rem' }}>
                 <input
@@ -162,12 +162,12 @@ const Caregiver = () => {
                   placeholder="Full Name"
                   value={newCaregiver.name}
                   onChange={(e) => setNewCaregiver({ ...newCaregiver, name: e.target.value })}
-                  style={{ padding: '0.8rem', border: '1px solid #e5e7eb', borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
+                  style={{ padding: '0.8rem', border: '1px solid var(--border)'.replace('var(--border)','var(--border)'), borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
                 />
                 <select
                   value={newCaregiver.relation}
                   onChange={(e) => setNewCaregiver({ ...newCaregiver, relation: e.target.value })}
-                  style={{ padding: '0.8rem', border: '1px solid #e5e7eb', borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
+                  style={{ padding: '0.8rem', border: '1px solid var(--border)'.replace('var(--border)','var(--border)'), borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
                 >
                   <option value="">Select Relation</option>
                   <option value="Spouse">Spouse</option>
@@ -182,14 +182,14 @@ const Caregiver = () => {
                   placeholder="Email"
                   value={newCaregiver.email}
                   onChange={(e) => setNewCaregiver({ ...newCaregiver, email: e.target.value })}
-                  style={{ padding: '0.8rem', border: '1px solid #e5e7eb', borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
+                  style={{ padding: '0.8rem', border: '1px solid var(--border)'.replace('var(--border)','var(--border)'), borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
                 />
                 <input
                   type="tel"
                   placeholder="Phone"
                   value={newCaregiver.phone}
                   onChange={(e) => setNewCaregiver({ ...newCaregiver, phone: e.target.value })}
-                  style={{ padding: '0.8rem', border: '1px solid #e5e7eb', borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
+                  style={{ padding: '0.8rem', border: '1px solid var(--border)'.replace('var(--border)','var(--border)'), borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
                 />
               </div>
               <div style={{ display: 'flex', gap: '1rem' }}>
@@ -231,7 +231,7 @@ const Caregiver = () => {
               <div
                 key={caregiver.id}
                 style={{
-                  background: '#f8fafc',
+                  background: 'var(--surface)'.replace('var(--surface)','var(--surface)'),
                   padding: '1.5rem',
                   borderRadius: '8px',
                   marginBottom: '1rem',
@@ -242,7 +242,7 @@ const Caregiver = () => {
                 }}
               >
                 <div style={{ flex: 1 }}>
-                  <h4 style={{ color: '#222', fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>
+                  <h4 style={{ color: 'var(--text)'.replace('var(--text)','var(--text)'), fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>
                     {caregiver.name} <span style={{ color: '#2563eb', fontWeight: 600, fontSize: '0.85rem' }}>({caregiver.role})</span>
                   </h4>
                   <p style={{ color: '#666', margin: '0.3rem 0', fontSize: '0.95rem' }}>
@@ -300,9 +300,9 @@ const Caregiver = () => {
         </section>
 
         {/* Patients Under Care */}
-        <section style={{ background: '#fff', padding: '2rem', borderRadius: '12px', marginBottom: '3rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+        <section style={{ background: 'var(--card)'.replace('var(--card)','var(--card)'), padding: '2rem', borderRadius: '12px', marginBottom: '3rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#222', margin: '0' }}>👨‍🏫 Patients You Care For</h2>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text)'.replace('var(--text)','var(--text)'), margin: '0' }}>👨‍🏫 Patients You Care For</h2>
             <button
               onClick={() => setShowInviteForm(!showInviteForm)}
               style={{
@@ -324,7 +324,7 @@ const Caregiver = () => {
 
           {/* Invite Form */}
           {showInviteForm && (
-            <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem', border: '1px solid #e5e7eb' }}>
+            <div style={{ background: 'var(--surface)'.replace('var(--surface)','var(--surface)'), padding: '1.5rem', borderRadius: '8px', marginBottom: '2rem', border: '1px solid var(--border)'.replace('var(--border)','var(--border)') }}>
               <h3 style={{ color: '#22c55e', marginTop: '0', marginBottom: '1rem' }}>Invite Patient to Med-Sync</h3>
               <div style={{ display: 'grid', gap: '1rem', marginBottom: '1rem' }}>
                 <input
@@ -332,12 +332,12 @@ const Caregiver = () => {
                   placeholder="Patient's Email"
                   value={inviteEmail}
                   onChange={(e) => setInviteEmail(e.target.value)}
-                  style={{ padding: '0.8rem', border: '1px solid #e5e7eb', borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
+                  style={{ padding: '0.8rem', border: '1px solid var(--border)'.replace('var(--border)','var(--border)'), borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
                 />
                 <select
                   value={selectedPatient?.id || ''}
                   onChange={(e) => setSelectedPatient(patients.find(p => p.id === parseInt(e.target.value)))}
-                  style={{ padding: '0.8rem', border: '1px solid #e5e7eb', borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
+                  style={{ padding: '0.8rem', border: '1px solid var(--border)'.replace('var(--border)','var(--border)'), borderRadius: '6px', fontFamily: 'inherit', fontSize: '0.95rem' }}
                 >
                   <option value="">Select Patient</option>
                   {patients.map(p => <option key={p.id} value={p.id}>{p.name}</option>)}
@@ -382,20 +382,20 @@ const Caregiver = () => {
               <div
                 key={patient.id}
                 style={{
-                  background: '#f8fafc',
+                  background: 'var(--surface)'.replace('var(--surface)','var(--surface)'),
                   padding: '1.5rem',
                   borderRadius: '8px',
                   marginBottom: '1rem',
-                  border: '1px solid #e5e7eb'
+                  border: '1px solid var(--border)'.replace('var(--border)','var(--border)')
                 }}
               >
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
                   <div>
-                    <h4 style={{ color: '#222', fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>👤 {patient.name}</h4>
+                    <h4 style={{ color: 'var(--text)'.replace('var(--text)','var(--text)'), fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '1.1rem' }}>👤 {patient.name}</h4>
                     <p style={{ color: '#666', margin: '0.3rem 0', fontSize: '0.95rem' }}>Age: {patient.age} years</p>
                   </div>
                   <div>
-                    <h4 style={{ color: '#222', fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '0.95rem' }}>Medical Conditions</h4>
+                    <h4 style={{ color: 'var(--text)'.replace('var(--text)','var(--text)'), fontWeight: 700, margin: '0 0 0.5rem 0', fontSize: '0.95rem' }}>Medical Conditions</h4>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                       {patient.conditions.map((condition, idx) => (
                         <span
@@ -414,11 +414,11 @@ const Caregiver = () => {
                       ))}
                     </div>
                   </div>
-                  <div style={{ textAlign: 'center', padding: '1rem', background: '#fff', borderRadius: '8px' }}>
+                  <div style={{ textAlign: 'center', padding: '1rem', background: 'var(--card)'.replace('var(--card)','var(--card)'), borderRadius: '8px' }}>
                     <p style={{ color: '#2563eb', fontWeight: 700, fontSize: '1.5rem', margin: '0' }}>{patient.adherenceRate}%</p>
                     <p style={{ color: '#666', fontSize: '0.9rem', margin: '0.3rem 0' }}>Adherence Rate</p>
                   </div>
-                  <div style={{ textAlign: 'center', padding: '1rem', background: '#fff', borderRadius: '8px' }}>
+                  <div style={{ textAlign: 'center', padding: '1rem', background: 'var(--card)'.replace('var(--card)','var(--card)'), borderRadius: '8px' }}>
                     <p style={{ color: '#2563eb', fontWeight: 700, fontSize: '1.3rem', margin: '0' }}>{patient.totalMedicines}</p>
                     <p style={{ color: '#666', fontSize: '0.9rem', margin: '0.3rem 0' }}>Active Medicines</p>
                   </div>
@@ -441,7 +441,7 @@ const Caregiver = () => {
         </section>
 
         {/* Medical Best Practices for Caregivers */}
-        <section style={{ background: '#fff', padding: '2rem', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+        <section style={{ background: 'var(--card)'.replace('var(--card)','var(--card)'), padding: '2rem', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
           <SectionIcon icon="📚" label="Best Practices for Caregivers" />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '2rem' }}>
             <div style={{ padding: '1.5rem', background: '#f0f9ff', borderRadius: '8px' }}>
@@ -474,8 +474,8 @@ const Caregiver = () => {
                 <li>Connect with support groups</li>
               </ul>
             </div>
-            <div style={{ padding: '1.5rem', background: '#f3e8ff', borderRadius: '8px' }}>
-              <h4 style={{ color: '#7c3aed', marginTop: '0', fontSize: '1rem' }}>🚨 Emergency Preparedness</h4>
+            <div style={{ padding: '1.5rem', background: 'rgba(13, 148, 136, 0.08)', borderRadius: '8px', borderLeft: '4px solid #0d9488' }}>
+              <h4 style={{ color: '#0d9488', marginTop: '0', fontSize: '1rem' }}>🚨 Emergency Preparedness</h4>
               <ul style={{ color: '#555', fontSize: '0.9rem', lineHeight: '1.8', paddingLeft: '1.5rem', margin: '0.5rem 0' }}>
                 <li>Know emergency contact numbers</li>
                 <li>Keep emergency information visible</li>

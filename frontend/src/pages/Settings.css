@@ -1,0 +1,168 @@
+/* Settings Page Styles & Layouts */
+
+.avatar-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.avatar-preview-box {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px dashed var(--border);
+  background: var(--surface);
+  transition: border-color 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-preview-box:hover {
+  border-color: var(--primary);
+}
+
+.avatar-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  color: #ffffff !important;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.avatar-preview-box:hover .avatar-overlay {
+  opacity: 1;
+}
+
+.settings-grid-layout {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .settings-grid-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.settings-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.settings-input-group label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.settings-input-group input,
+.settings-input-group select {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 0.95rem 1.1rem;
+  font-size: 0.95rem;
+  background: var(--surface);
+  color: var(--text);
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+.settings-input-group input:focus,
+.settings-input-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.settings-input-group input:disabled,
+.settings-input-group select:disabled {
+  background: var(--border-muted);
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+.settings-read-only-box {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  padding: 0.95rem 1.1rem;
+  font-size: 0.95rem;
+  background: var(--border-muted);
+  color: var(--text);
+  font-weight: 600;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.settings-action-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.settings-cancel-btn {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.85rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.settings-cancel-btn:hover {
+  background: var(--border-muted);
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.settings-save-btn {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 0.85rem 1.7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+}
+
+.settings-save-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.3);
+}
+
+.settings-save-btn:active {
+  transform: translateY(0);
+}
