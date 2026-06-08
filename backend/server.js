@@ -21,7 +21,7 @@ app.use(cors({
     'http://localhost:5173',
     'http://localhost:5176',
     'https://medsyncs.vercel.app',
-    'https://medsync-v67k.onrender.com'
+    'https://imbatido.onrender.com'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],

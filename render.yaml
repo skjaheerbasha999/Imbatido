@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: medsync-backend
+    name: imbatido
     env: node
     plan: free
     rootDir: backend
