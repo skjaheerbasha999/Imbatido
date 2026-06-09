@@ -20,7 +20,7 @@ app.use(cors({
   origin: [
     'http://localhost:5173',
     'http://localhost:5176',
-    'https://medsyncs.vercel.app',
+    'https://medysync.vercel.app',
     'https://imbatido.onrender.com'
   ],
   credentials: true,
